@@ -7,9 +7,9 @@
   <style>
 html, body {
     abcoverflow: auto;
-    height:100%;
-         
-         width: 100%; 
+    width: 100%;
+  height:100%;
+  
 }
  /*   html{
       min-height: 100%;
@@ -23,24 +23,29 @@ html, body {
          
     } */
         .container {
-          height: 100%;
+         
         width: 100%;
-        
-          background-color: red;
+        height:100%;
+          background-color: yellow;
           display: flex;
-          flex-direction: column;
+          flex-direction: column
           
         }
         .rows{
-          height:100%;
           width: 100%;
-            background-color: yellow;
+          height: 100%;
+          border: 1px solid blue;
+  box-sizing: border-box;
+            
             display:flex;
+            flex-direction: row;
         }
         .columns {
-         width: 100%;
+          border: 1px solid red;
+  box-sizing: border-box;
+          width: 100%;
          height: 100%;
-         border:1px solid blue;
+        
          
       
         }
@@ -73,9 +78,10 @@ for (i=0; i<16; i++) {
      for (j=0; j<16; j++) {
       const columns = document.createElement('div');
       columns.className = "columns";
-      columns.textContent=j;
+      //columns.textContent=j;
 
       rows.appendChild(columns);
+      console.log('test');
       
    
        
@@ -93,6 +99,7 @@ for (i=0; i<16; i++) {
     
 }
 document.body.appendChild(container);
+console.log("test");
 }
 </script>
 
