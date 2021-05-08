@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <style>
+html, body {
+    abcoverflow: auto;
+    height:100%;
+         
+         width: 100%; 
+}
+ /*   html{
+      min-height: 100%;
+      width: 100%;
+      
+    }
+    body {
+      height:100%;
+         
+         width: 100%; 
+         
+    } */
+        .container {
+          height: 100%;
+        width: 100%;
+        
+          background-color: red;
+          display: flex;
+          flex-direction: column;
+          
+        }
+        .rows{
+          height:100%;
+          width: 100%;
+            background-color: yellow;
+            display:flex;
+        }
+        .columns {
+         width: 100%;
+         height: 100%;
+         border:1px solid blue;
+         
+      
+        }
+        
+  </style>
+</head>
+<body>
+    
+
+
+<script>
+
+//first lets try to create square divs using a loop with conditions
+grid();
+function grid() {
+const container = document.createElement('div');
+container.id = "container";
+    container.className = "container";
+    
+for (i=0; i<16; i++) {
+  
+    const rows = document.createElement('div');
+    container.appendChild(rows).className = "rows";
+    //var squares = document.querySelectorAll(".rows");
+    //rows.textContent = i;
+   // rows.id = "row " + i;
+    
+    
+    
+     for (j=0; j<16; j++) {
+      const columns = document.createElement('div');
+      columns.className = "columns";
+      columns.textContent=j;
+
+      rows.appendChild(columns);
+      
+   
+       
+       
+
+       
+     }
+     
+     
+     
+      
+     //const squares = document.querySelectorAll(".classrows");
+      //squares[i].textContent = i;
+     //
+    
+}
+document.body.appendChild(container);
+}
+</script>
+
+
+</body>
+</html>
+
+
+<!-- 
+create a 16x16 grid of square divs with i believe all the same properties. Set a hover effect
+so that the mouse creates a trail wherever it goes in the div for each div, similar to a pen would
+in etchasketch. 
+
+Optional, have it mark 10 percent of the div rather than the whole thing each time it passes through, 
+so 10 passes will fill it up. also optional, set the color the div changes when hovered ro random.
+
+Also have the div change colors when it enters a div and stops when it exits and 
+then changes colors of the next div it enters. Add a button that clears the screen out and asks
+the user via pop up how many squares per side to make the grid in the same space as before
+which was 960px. Set the max at 100 user input ie 100x100.
+
+
+-->
+
+
+
+
