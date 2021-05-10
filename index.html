@@ -4,137 +4,94 @@
   <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <style>
-html, body {
-  box-sizing: border-box;
-    width: 960px;
-  height:960px;
+<style>
+    html, body {
+        box-sizing: border-box;
+        width: 960px;
+        height:960px;
   
-}
- /*   html{
-      min-height: 100%;
-      width: 100%;
-      
     }
-    body {
-      height:100%;
-         
-         width: 100%; 
-         
-    } */
-        .container {
+    .container {
          
         width: 100%;
         height:100%;
+        display: flex;
+        flex-direction: column
+    }
+    .rows{
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        display:flex;
+        flex-direction: row;
+        /*flex: 1 1 0;*/
+    }
+    .columns {
+        /*flex: 1 1 0;*/
+        box-sizing: border-box;
+        border: 1px solid blue;
+        width: 100%;
+        height: 100%;
+    }
         
-          
-          display: flex;
-          flex-direction: column
-          
-        }
-        /*.columns:hover {
-          background-color: gold;
-          transition:0;
-        } */
-        .rows{
-          width: 100%;
-          height: 100%;
-          
-  box-sizing: border-box;
-            
-            display:flex;
-            flex-direction: row;
-            flex: 1 1 0;
-        }
-        .columns {
-          flex: 1 1 0;
-  box-sizing: border-box;
-  border: 1px solid red;
-          width: 100%;
-         height: 100%;
-        
-         
-      
-        }
-        
-  </style>
+</style>
 </head>
 <body>
     
-  <button id = "gridbutton" type="button">Reset Grid</button>
+    <button id = "gridbutton" type="button">Reset Grid</button>
 
 <script>
 
-//first lets try to create square divs using a loop with conditions
-//add function dependent on value given, which is dimension of grid 
-//creat prompt to ask how many squares and then use answer as variable to enter in function grid
-//
+
 const container = document.createElement('div');
 container.id = "container";
-    container.className = "container";
- //   document.body.appendChild(container); 
-grid(16);  ////this creates new grid, instead of resetting older grid. try inside grid function to reset parameters
-document.querySelector("#gridbutton").addEventListener("click", removeNodes);
+container.className = "container";
+document.body.appendChild(container); 
 
-document.querySelector("#gridbutton").addEventListener("click", function (){
-  var gridsize = prompt("How many squares per side of the grid do you want?");
-  grid(gridsize);
-});
+grid(16);  
+
+
+document.querySelector("#gridbutton").addEventListener("click", removeNodes);
+document.querySelector("#gridbutton").addEventListener("click", promptInput);
 
 function removeNodes () {
   var myNode = document.getElementById("container");
-  while(myNode.firstChild)
-{
+  while(myNode.firstChild) {
    myNode.firstChild.remove();
 }
 }
+
+function promptInput () {
+    var gridsize = prompt("How many squares per side of the grid do you want?  Max:100");
+    while (gridsize>100 || gridsize<0 || isNaN(gridsize)) {
+       
+        gridsize = prompt("Input is invalid. Please enter a number between 0-100.");
+        }
+        grid(gridsize);
+}
+
 function grid(squares) {
     
+    for (i=0; i<squares; i++) {
+        const rows = document.createElement('div');
+        container.appendChild(rows).className = "rows";
     
-for (i=0; i<squares; i++) {
-  
-    const rows = document.createElement('div');
-    container.appendChild(rows).className = "rows";
-    //var squares = document.querySelectorAll(".rows");
-    //rows.textContent = i;
-   // rows.id = "row " + i;
-    
-    
-    
-     for (j=0; j<squares; j++) {
-      const columns = document.createElement('div');
-      columns.className = "columns";
-      //columns.textContent=j;
-
-      rows.appendChild(columns);
-      console.log('test');
-      
-   
-       
-       
-
-       
+            for (j=0; j<squares; j++) {
+                const columns = document.createElement('div');
+                columns.className = "columns";
+                rows.appendChild(columns);
+                console.log('testJ');
+            }
      }
-     
-     
-     
-      
-     //const squares = document.querySelectorAll(".classrows");
-      //squares[i].textContent = i;
-     //
-    
-}
-document.body.appendChild(container);
-console.log("test");
+    console.log("testfunc");
 
-const cells = document.getElementsByClassName("columns");
-for (k=0;k<cells.length; k++) {
-
-cells[k].addEventListener("mouseover",function(event){event.target.style.backgroundColor='#' + Math.floor(Math.random() * 16777215).toString(16);
-
-});
-console.log("testmouse");
-}
+    const cells = document.getElementsByClassName("columns");
+    for (k=0;k<cells.length; k++) {
+        //cells[k].addEventListener("mouseover",function(event){event.target.style.backgroundColor='#' + Math.floor(Math.random() * 16777215).toString(16);
+        //use for random color
+        cells[k].addEventListener("mouseover", function(event){event.target.style.backgroundColor="yellow"});
+        console.log("testmouse");
+    }
 }
 </script>
 
